@@ -45,6 +45,10 @@ export class AppController {
     @Ctx() context: RmqContext,
   ) {
     try {
+      console.log('payload: ', payload)
+      Logger.log(
+        `message to be sent to customer: ${payload.customer}.`,
+      );
       this.makeBurger(payload.patties);
 
       this.emitBurgerSuccess({ customer: payload.customer });
